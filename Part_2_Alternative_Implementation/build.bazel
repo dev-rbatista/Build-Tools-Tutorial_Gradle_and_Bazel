@@ -1,0 +1,12 @@
+java_binary(
+    name = "Main",
+    srcs = glob(["src/main/java/Main.java"]),
+    deps = [":copyoffiles"],
+)
+
+genrule(
+name = "copyoffiles",
+srcs = ["src/main/java/FileToCopy.md"],
+cmd = " cp $(SRCS) $(@D) ",
+outs = ["src/main/java"],
+)
